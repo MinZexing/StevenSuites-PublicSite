@@ -7,18 +7,18 @@ function Cabin({ cabin }) {
     cabin;
 
   return (
-    <div className="grid grid-cols-[3fr_4fr] gap-20 border border-primary-800 py-3 px-10 mb-24">
-      <div className="relative scale-[1.15] -translate-x-3">
+    <div className="grid grid-cols-[3fr_4fr] gap-20 border border-primary-800 py-4 px-7 mb-24">
+      <div className="relative scale-[1.05] -translate-x-3">
         <Image
           src={image}
           fill
-          className="object-cover"
+          className="object-cover rounded-md"
           alt={`Cabin ${name}`}
         />
       </div>
 
       <div>
-        <h3 className="text-accent-100 font-black text-7xl mb-5 translate-x-[-254px] bg-primary-950 p-6 pb-1 w-[150%]">
+        <h3 className="text-accent-100 font-black text-7xl mb-5 bg-primary-950 p-6 pb-1 w-full">
           Cabin {name}
         </h3>
 

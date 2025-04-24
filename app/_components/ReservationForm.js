@@ -1,14 +1,36 @@
 "use client";
 
+import { differenceInDays } from "date-fns";
 import { useReservation } from "./ReservationContext";
+import { createBooking } from "../_lib/actions";
+import SubmitButton from "./SubmitButton";
 
-function ReservationForm({ cabin, user }) {
+function ReservationForm({ cabin, user, settings }) {
   // CHANGE
-  const { maxCapacity } = cabin;
-  const { range } = useReservation();
+  const { maxCapacity, regularPrice, discount, id } = cabin;
+  const { range, resetRange } = useReservation();
+
+  const startDate = range.from;
+  const endDate = range.to;
+
+  const numNights = differenceInDays(endDate, startDate);
+
+  const cabinPrice = numNights * (regularPrice - discount);
+
+  const bookingData = {
+    startDate,
+    endDate,
+    numNights,
+    cabinPrice,
+    cabinId: id,
+  };
+
+  const createBookingWithData = createBooking.bind(null, bookingData);
+
+  const { minBookingLength, maxBookingLength } = settings;
 
   return (
-    <div className="scale-[1.01]">
+    <div className="bg-primary-900 flex flex-col h-full">
       <div className="bg-primary-800 text-primary-300 px-16 py-2 flex justify-between items-center">
         <p>Logged in as</p>
 
@@ -24,7 +46,13 @@ function ReservationForm({ cabin, user }) {
         </div>
       </div>
 
-      <form className="bg-primary-900 py-10 px-16 text-lg flex gap-5 flex-col">
+      <form
+        className="bg-primary-900 py-10 px-16 text-lg flex gap-5 flex-col"
+        action={async (formData) => {
+          await createBookingWithData(formData);
+          resetRange();
+        }}
+      >
         <div className="space-y-2">
           <label htmlFor="numGuests">How many guests?</label>
           <select
@@ -44,7 +72,7 @@ function ReservationForm({ cabin, user }) {
           </select>
         </div>
 
-        <div className="space-y-2">
+        <div className="space-y-2 ">
           <label htmlFor="observations">
             Anything we should know about your stay?
           </label>
@@ -56,12 +84,32 @@ function ReservationForm({ cabin, user }) {
           />
         </div>
 
-        <div className="flex justify-end items-center gap-6">
-          <p className="text-primary-300 text-base">Start by selecting dates</p>
+        <div>
+          <label htmlFor="promoCode">Promo Code ?</label>
+          <input
+            name="promoCode"
+            id="promoCode"
+            className="px-5 py-3 bg-primary-200 text-primary-800 w-full shadow-sm rounded-sm"
+          />
+        </div>
 
-          <button className="bg-accent-500 px-8 py-4 text-primary-800 font-semibold hover:bg-accent-600 transition-all disabled:cursor-not-allowed disabled:bg-gray-500 disabled:text-gray-300">
-            Reserve now
-          </button>
+        <div className="py-10">
+          <p className=" text-accent-500 text-xl">
+            You need to book at least {minBookingLength + 1} days
+          </p>
+          <p className="text-accent-500 text-xl">
+            Maximum {maxBookingLength} days
+          </p>
+        </div>
+
+        <div className="flex justify-end items-center gap-6 pt-10">
+          {!(startDate && endDate) ? (
+            <p className="text-primary-300 text-base">
+              Start by selecting dates
+            </p>
+          ) : (
+            <SubmitButton pendingLabel="Reserving...">Reserve Now</SubmitButton>
+          )}
         </div>
       </form>
     </div>
