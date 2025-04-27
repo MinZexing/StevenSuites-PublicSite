@@ -24,12 +24,13 @@ export default async function Page({ searchParams }) {
         Our Luxury Cabins
       </h1>
       <p className="text-primary-200 text-lg mb-10">
-        Cozy yet luxurious cabins, located right in the heart of the Italian
-        Dolomites. Imagine waking up to beautiful mountain views, spending your
-        days exploring the dark forests around, or just relaxing in your private
-        hot tub under the stars. Enjoy nature&apos;s beauty in your own little
-        home away from home. The perfect spot for a peaceful, calm vacation.
-        Welcome to paradise.
+        Cozy yet luxurious suites, located right in the heart of Santorini’s
+        iconic whitewashed cliffs. Imagine waking up to breathtaking views of
+        the deep blue Aegean Sea, spending your days wandering the charming
+        narrow streets, or simply unwinding in your private pool under the
+        golden Greek sun. Embrace the island’s beauty and serenity in your own
+        little home away from home. The perfect escape for a peaceful,
+        unforgettable vacation. Welcome to paradise.
       </p>
 
       <div className="flex justify-end mb-8">

@@ -7,7 +7,7 @@ function Cabin({ cabin }) {
     cabin;
 
   return (
-    <div className="grid grid-cols-[3fr_4fr] gap-20 border border-primary-800 py-4 px-7 mb-24">
+    <div className="grid grid-cols-[3fr_4fr] gap-20 border border-primary-800 py-4 px-7 mb-22">
       <div className="relative scale-[1.05] -translate-x-3">
         <Image
           src={image}
