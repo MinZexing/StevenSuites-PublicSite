@@ -10,6 +10,13 @@ function ReservationForm({ cabin, user, settings }) {
   const { maxCapacity, regularPrice, discount, id } = cabin;
   const { range, resetRange } = useReservation();
 
+  function toUTCMidnight(date) {
+    if (!date) return undefined;
+    return new Date(
+      Date.UTC(date.getFullYear(), date.getMonth(), date.getDate())
+    );
+  }
+
   const startDate = range.from;
   const endDate = range.to;
 
