@@ -4,6 +4,8 @@ import Spinner from "@/app/_components/Spinner";
 import { getCabin, getCabins } from "@/app/_lib/data-service";
 import { Suspense } from "react";
 
+export const revalidate = 360;
+
 export async function generateMetadata({ params }) {
   const { name } = await getCabin(params.cabinId);
   return { title: `Cabin ${name}` };
@@ -37,7 +39,7 @@ export default async function Page({ params }) {
   // const bookedDates = await getBookedDatesByCabinId(params.cabinId);
 
   return (
-    <div className="max-w-6xl mx-auto mt-8">
+    <div className="max-w-6xl mx-auto mt-8 min-w-[720px]">
       <Cabin cabin={cabin} />
       <div>
         <h2 className="text-5xl font-semibold text-center my-10 text-accent-400">

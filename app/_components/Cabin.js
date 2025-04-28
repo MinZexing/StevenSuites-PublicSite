@@ -18,7 +18,7 @@ function Cabin({ cabin }) {
       </div>
 
       <div>
-        <h3 className="text-accent-100 font-black text-7xl mb-5 bg-primary-950 p-6 pb-1 w-full">
+        <h3 className="text-accent-100 font-black text-7xl mb-5 bg-primary-900 p-6 pb-1 w-full">
           Cabin {name}
         </h3>
 
@@ -36,8 +36,8 @@ function Cabin({ cabin }) {
           <li className="flex gap-3 items-center">
             <MapPinIcon className="h-5 w-5 text-primary-600" />
             <span className="text-lg">
-              Located in the heart of the{" "}
-              <span className="font-bold">Dolomites</span> (Italy)
+              Located in the heart of{" "}
+              <span className="font-bold">Santorini</span> (Greece)
             </span>
           </li>
           <li className="flex gap-3 items-center">
