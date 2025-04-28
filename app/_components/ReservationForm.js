@@ -17,8 +17,8 @@ function ReservationForm({ cabin, user, settings }) {
     );
   }
 
-  const startDate = range.from;
-  const endDate = range.to;
+  const startDate = toUTCMidnight(range.from);
+  const endDate = toUTCMidnight(range.to);
 
   const numNights = differenceInDays(endDate, startDate);
 
