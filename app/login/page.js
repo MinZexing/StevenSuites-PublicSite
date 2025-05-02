@@ -12,6 +12,17 @@ export default function Page() {
       </h2>
 
       <SignInButton />
+      <p className="pt-3">
+        Hotel Staff? Log in through{" "}
+        <a
+          href="https://steven-suites-admin-site.vercel.app/login"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{ fontWeight: "bold", textDecoration: "underline" }}
+        >
+          Admin Portal
+        </a>
+      </p>
     </div>
   );
 }
